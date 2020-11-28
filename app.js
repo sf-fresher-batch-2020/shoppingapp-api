@@ -24,6 +24,7 @@ const express = require('express')
     };
 
     // Create Routes
+    app.get('/', (req,res)=>res.send("API Server working"));
     app.get('/api/users', getAllUsers);
     app.post('/api/users', createUser);
     app.post("/api/users/login",login);
