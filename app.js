@@ -1,19 +1,20 @@
 const express = require('express')
     const app = express()
-    const port = 3000
+    const port = process.env.PORT || 5000
     app.use(express.json())
 
     // Create Connection Pool
     const mysql = require("mysql2/promise");
+const { request } = require('express');
 
-    const pool = mysql.createPool({
-            host: "localhost",
-            port: 3306,
-            user: "root",
-            password: "K@lyani",
-            database: "shopping_app_db",
-            connectionLimit: 10
-    });
+     const pool = mysql.createPool({
+         host: process.env.DB_URL || "localhost",
+         port: 3306,
+         user: process.env.DB_USER || "root",
+         password: process.env.DB_PASSWORD || "K@lyani",
+         database: process.env.DB_NAME || "shopping_app_db",
+         connectionLimit: 10
+     });
 
     //const Joi = require('joi');
 
